@@ -1,0 +1,130 @@
+{
+  "G1": {
+    "description": "Baseline — biaya linier, tanpa kapasitas",
+    "input": {
+      "fixed_cost": 300000,
+      "variable_cost": 8000,
+      "quad_cost": 0,
+      "ref_price": 22000,
+      "ref_demand": 80,
+      "sensitivity": 5,
+      "capacity": null
+    },
+    "expected": {
+      "a": 38000.0,
+      "b": 200.0,
+      "alpha": 200.0,
+      "beta": 30000.0,
+      "status": "INTERIOR_OPTIMUM",
+      "x_star": 75.0,
+      "p_star": 23000.0,
+      "revenue_star": 1725000.0,
+      "cost_star": 900000.0,
+      "profit_star": 825000.0,
+      "d2": -400.0,
+      "x_int": 75,
+      "profit_int": 825000.0,
+      "bep_exists": true,
+      "discriminant": 660000000.0,
+      "x_bep_low": 10.773837106674355,
+      "x_bep_high": 139.22616289332564,
+      "x_bep_low_int": 11,
+      "x_bep_high_int": 139,
+      "mr_at_opt": 8000.0,
+      "mc_at_opt": 8000.0,
+      "elasticity": -1.5333333333,
+      "dx_dv": -0.0025,
+      "dx_dFC": 0.0,
+      "dx_da": 0.0025,
+      "dP_dFC": -1.0,
+      "dP_dv": -75.0,
+      "dP_da": 75.0,
+      "reference_profit": 820000.0
+    }
+  },
+  "G2": {
+    "description": "Biaya kuadrat (lembur), c=20",
+    "input": {
+      "fixed_cost": 300000,
+      "variable_cost": 8000,
+      "quad_cost": 20,
+      "ref_price": 22000,
+      "ref_demand": 80,
+      "sensitivity": 5,
+      "capacity": null
+    },
+    "expected": {
+      "a": 38000.0,
+      "b": 200.0,
+      "alpha": 220.0,
+      "beta": 30000.0,
+      "status": "INTERIOR_OPTIMUM",
+      "x_star": 68.18181818181818,
+      "p_star": 24363.636363636364,
+      "profit_star": 722727.2727272727,
+      "d2": -440.0,
+      "x_int": 68,
+      "profit_int": 722720.0,
+      "mr_at_opt": 10727.272727272727,
+      "mc_at_opt": 10727.272727272727
+    }
+  },
+  "G3": {
+    "description": "Kapasitas membatasi (x_max=60)",
+    "input": {
+      "fixed_cost": 300000,
+      "variable_cost": 8000,
+      "quad_cost": 0,
+      "ref_price": 22000,
+      "ref_demand": 80,
+      "sensitivity": 5,
+      "capacity": 60
+    },
+    "expected": {
+      "status": "CAPACITY_BOUND",
+      "x_opt": 60.0,
+      "p_opt": 26000.0,
+      "profit_opt": 780000.0,
+      "x_int": 60,
+      "profit_int": 780000.0,
+      "warning_code": "W_CAPACITY_BINDING"
+    }
+  },
+  "G4": {
+    "description": "Selalu rugi — tidak ada BEP",
+    "input": {
+      "fixed_cost": 1500000,
+      "variable_cost": 8000,
+      "quad_cost": 0,
+      "ref_price": 22000,
+      "ref_demand": 80,
+      "sensitivity": 5,
+      "capacity": null
+    },
+    "expected": {
+      "status": "INTERIOR_OPTIMUM",
+      "x_star": 75.0,
+      "profit_star": -375000.0,
+      "bep_exists": false,
+      "warning_code": "W_NEG_PROFIT"
+    }
+  },
+  "G5": {
+    "description": "Tidak layak produksi (v > a)",
+    "input": {
+      "fixed_cost": 300000,
+      "variable_cost": 45000,
+      "quad_cost": 0,
+      "ref_price": 22000,
+      "ref_demand": 80,
+      "sensitivity": 5,
+      "capacity": null
+    },
+    "expected": {
+      "status": "NO_PRODUCTION",
+      "x_opt": 0,
+      "profit_opt": -300000.0,
+      "warning_code": "W_NO_PRODUCTION"
+    }
+  }
+}
