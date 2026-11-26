@@ -32,6 +32,19 @@ python -m pip install -e ".[dev]"
 
 ---
 
+## 🌐 Hosting dari GitHub
+
+Frontend Next.js di-host di Vercel dan API FastAPI di Render. Keduanya dapat di-deploy otomatis dari repository ini.
+
+1. **Deploy API di Render**: buat Blueprint dari repository GitHub ini (`New` → `Blueprint`), lalu pilih `render.yaml` di root repository. Setelah deploy, salin URL service API Render, misalnya `https://kopioptima-api.onrender.com`.
+2. **Deploy frontend di Vercel**: impor repository yang sama, atur **Root Directory** ke `frontend`, lalu tambahkan environment variable `NEXT_PUBLIC_API_URL` dengan URL API Render (tanpa garis miring di akhir). Deploy frontend dan salin URL domain Vercel.
+3. **Izinkan frontend di API**: di Render, atur environment variable `CORS_ORIGINS` ke URL frontend Vercel, misalnya `https://kopioptima.vercel.app`, lalu redeploy/restart service API.
+4. Buka URL frontend Vercel untuk menggunakan aplikasi. Endpoint kesehatan API tersedia di `/health`.
+
+Render Free dapat membuat service tidak aktif setelah periode tanpa trafik sehingga permintaan pertama berikutnya mungkin perlu menunggu service aktif kembali.
+
+---
+
 ## 🖥️ Menjalankan Server API
 
 Jalankan FastAPI development server dengan Uvicorn:
